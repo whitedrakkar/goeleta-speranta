@@ -1,20 +1,28 @@
 
 export function Companies({ companies }) {
 
+    function handleEdit(company) {
+
+        /* onAddNew(company); */
+    }
+
     return (
         <>
             <div >Companies</div>
-            <ol>
+            <ul>
                 {
                     companies.map((company, index) => {
                         return (
                             <li key={index}>
-                                <div >{company.name}: {company.cif}</div>
+                                <div className='row'>
+                                    <div>{company.name}: {company.cif}</div>
+                                    <button onClick={handleEdit(company)}>Edit</button>
+                                </div>
                             </li>
                         );
                     })
                 }
-            </ol>
+            </ul>
         </>
     )
 }
