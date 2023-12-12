@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+
 import { LabelAndTextInput } from './LabelAndTextInput.js';
 import { Dropdown } from './Dropdown.js';
 
-export function AddCompany({ onAddNew }) {
+export function CompanyEdit({ onEdit }) {
+
+    let { id } = useParams();
+    let navigate = useNavigate();
+
+    const [loading, setLoading] = useState(false);
 
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
@@ -13,7 +20,32 @@ export function AddCompany({ onAddNew }) {
     const [email, setEmail] = useState('')
     const [taxCategory, setTaxCategory] = useState('Standard')
 
-    function handleAddNew() {
+    useEffect(() => {
+        setLoading(true);
+
+        fetch('http://127.0.0.2:8080/api/companies/' + id)
+            .then(response => {
+                return response.json();
+            }
+            )
+            .then(data => {
+                setName(data.name);
+                setAddress(data.city + ' ' + data.street + ', ' + data.county + ', ' + data.country);
+                setCif(data.cif ?? '');
+                setEuVatNumber(data.euVatNumber ?? '');
+                setLegalId(data.legalId ?? '');
+                setPhone(data.phone ?? '');
+                setEmail(data.email ?? '');
+                setTaxCategory(data.taxCategory);
+                setLoading(false);
+            })
+    }, []);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    function handleEdit() {
 
         let company = {
             name: name,
@@ -25,7 +57,7 @@ export function AddCompany({ onAddNew }) {
             email: email,
             taxCategory: taxCategory
         }
-        onAddNew(company);
+        onEdit(company);
     }
 
     return (
@@ -40,9 +72,11 @@ export function AddCompany({ onAddNew }) {
                 <LabelAndTextInput value={email} label="E-mail" onUpdate={setEmail}></LabelAndTextInput>
                 <Dropdown value={taxCategory} label="Tax category" onUpdate={setTaxCategory}></Dropdown>
             </form>
-            <div >
-                <button onClick={handleAddNew}>Add new</button>
+            <div>
+                <button onClick={handleEdit}>Save</button>
+                <button onClick={() => navigate(-1)}>Back</button>
             </div>
+
         </>
     )
 }
