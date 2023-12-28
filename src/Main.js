@@ -1,6 +1,7 @@
 import { Companies } from './components/Companies.js';
 import { CompanyAdd } from './components/CompanyAdd.js';
 import { CompanyEdit } from './components/CompanyEdit.js';
+import { CompanyView } from './components/CompanyView.js';
 import { Home } from "./components/Home.js";
 import { About } from "./components/About.js";
 
@@ -27,31 +28,10 @@ export default function Main() {
             element={<Home />}
           />
 
-          {/* This route is for about component 
-          with exact path "/companies", in component 
-          props we passes the imported component*/}
-          <Route
-            path="/companies"
-            element={<Companies />}
-          />
-
-          {/* This route is for about component 
-          with exact path "/companies/new", in component 
-          props we passes the imported component*/}
-          <Route
-            path="/companies/new"
-            element={<CompanyAdd />}
-          />
-
-          {/* This route is for about component 
-          with exact path "/companies/:id", in component 
-          props we passes the imported component*/}
-          <Route
-            path="/companies/:id"
-            element={<CompanyEdit />}
-          />
-
-
+          <Route path="/companies" element={<Companies />} />
+          <Route path="/companies/new" element={<CompanyAdd />} />
+          <Route path="/companies/:id/edit" element={<CompanyEdit />} />
+          <Route path="/companies/:id/view" element={<CompanyView />} />
 
           {/* This route is for about component 
           with exact path "/about", in component 

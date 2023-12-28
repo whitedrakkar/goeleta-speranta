@@ -11,15 +11,10 @@ export function Companies() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        console.log(`/something/`);
-    }, []);
-
-    useEffect(() => {
         let ignore = false;
 
         setLoading(true);
-        console.log("test");
-        fetch('http://127.0.0.2:8080/api/companies')
+        fetch('http://127.0.0.2:8080/api/companies/min')
             .then(response => {
                 return response.json();
             })

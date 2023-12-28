@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Companies } from './Companies.js';
+import { CompanyView } from './CompanyView.js';
 
 export function Home() {
 
@@ -9,11 +9,12 @@ export function Home() {
     return (
         <>
 
-            <div>Home</div>
             <div>
-                <a href='/companies' onClick={() => navigate('/companies', { replace: true })} rel="noopener noreferrer" > Companies </a>
-                <a href='/invoices' onClick={() => navigate('/invoices', { replace: true })} rel="noopener noreferrer" > Invoices </a>
+                <a href='/companies' onClick={() => navigate('/companies', { replace: true })} rel='noopener noreferrer' > Companies </a>
+                <a href='/invoices' onClick={() => navigate('/invoices', { replace: true })} rel='noopener noreferrer' > Invoices </a>
             </div >
+
+            <CompanyView companyId='31124459' />
         </>
     )
 }

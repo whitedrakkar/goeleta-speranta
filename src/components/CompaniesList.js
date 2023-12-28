@@ -5,14 +5,12 @@ export function CompaniesList({ companies }) {
     const navigate = useNavigate();
 
     function handleView(company) {
-        navigateTo('/companies/' + company.id + '?edit=false');
+        let path = '/companies/' + company.id + '/view';
+        navigate(path, { replace: true });
     }
 
     function handleEdit(company) {
-        navigateTo('/companies/' + company.id + '?edit=true');
-    }
-
-    function navigateTo(path) {
+        let path = '/companies/' + company.id + '/edit';
         navigate(path, { replace: true });
     }
 
