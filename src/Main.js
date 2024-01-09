@@ -1,10 +1,7 @@
 import { Companies } from './components/Companies.js';
-import { CompanyAdd } from './components/CompanyAdd.js';
-import { CompanyEdit } from './components/CompanyEdit.js';
-import { CompanyView } from './components/CompanyView.js';
 import { Home } from "./components/Home.js";
 import { About } from "./components/About.js";
-
+import { Link } from "react-router-dom";
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,38 +16,26 @@ export default function Main() {
 
       {/* This is the alias of BrowserRouter i.e. Router */}
       <Router>
+
+        <nav>
+          <Link to="/home">Home</Link>
+          <Link to="/companies">Companies</Link>
+          <Link to="/about">About</Link>
+        </nav>
+
         <Routes>
-          {/* This route is for about component 
-          with exact path "/home", in component 
-          props we passes the imported component*/}
-          <Route
-            path="/"
-            element={<Home />}
-          />
-
-          <Route path="/companies" element={<Companies />} />
-          <Route path="/companies/new" element={<CompanyAdd />} />
-          <Route path="/companies/:id/edit" element={<CompanyEdit />} />
-          <Route path="/companies/:id/view" element={<CompanyView />} />
-
-          {/* This route is for about component 
-          with exact path "/about", in component 
-          props we passes the imported component*/}
-          <Route
-            path="/about"
-            element={<About />}
-          />
-
+          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/companies/*" element={<Companies />} />
+          <Route path="/about" element={<About />} />
           {/* If any route mismatches the upper 
           route endpoints then, redirect triggers 
           and redirects app to home component with to="/" */}
           {/* <Redirect to="/" /> */}
-          <Route
-            path="*"
-            element={<Navigate to="/" />}
-          />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
+
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { LabelAndTextInput } from './LabelAndTextInput.js';
 import { Dropdown } from './Dropdown.js';
+import { Link } from 'react-router-dom';
 
 export function CompanyAdd({ onAddNew }) {
 
@@ -41,8 +42,10 @@ export function CompanyAdd({ onAddNew }) {
                 <Dropdown value={taxCategory} label="Tax category" onUpdate={setTaxCategory}></Dropdown>
             </form>
             <div >
-                <button onClick={handleAddNew}>Add new</button>
+                <button class="btn btn-link" onClick={handleAddNew}>Create</button>
+                <Link class="btn btn-link" to="/companies">Back</Link>
             </div>
+            
         </>
     )
 }

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import { Routes, Route, Outlet } from "react-router-dom";
 
 import { CompaniesList } from './CompaniesList.js';
+import { CompanyAdd } from './CompanyAdd.js';
+import { CompanyEdit } from './CompanyEdit.js';
+import { CompanyView } from './CompanyView.js';
 
 export function Companies() {
 
-    const navigate = useNavigate();
-    
     const [companies, setCompanies] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -44,16 +46,17 @@ export function Companies() {
         /* onAddNew(company); */
     }
 
-    function navigateToAddNew() {
-        navigate('/companies/new', { replace: true });
-    }
-
     return (
         <>
-            <div>
-                <button onClick={() => navigateToAddNew()} > Add new </button>
-            </div>
-            <CompaniesList companies={companies}></CompaniesList>
+
+            <Routes>
+                <Route index element={<CompaniesList companies={companies} />} />
+                <Route path="new" element={<CompanyAdd onAddNew={handleAddNew} />} />
+                <Route path=":id/edit" element={<CompanyEdit />} />
+                <Route path=":id/view" element={<CompanyView />} />
+            </Routes>
+
+            <Outlet />
         </>
     )
 }

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export function CompaniesList({ companies }) {
 
@@ -17,6 +17,7 @@ export function CompaniesList({ companies }) {
     return (
         <>
             <div>Companies</div>
+            <Link to="new">Add new</Link>
             <div className='container'>
                 {
                     companies.map((company, index) => {
