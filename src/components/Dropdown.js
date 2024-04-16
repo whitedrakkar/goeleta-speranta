@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Dropdown({ value, label, onUpdate }) {
+export function Dropdown({ value, label, onUpdate, options }) {
 
     const id = React.useId();
     const fieldId = `${id}-${label}`;
@@ -18,12 +18,12 @@ export function Dropdown({ value, label, onUpdate }) {
                         onUpdate(event.target.value);
                     }}
                 >
-                    <option value="NotRegisteredForVAT">
-                        Not registered for VAT
-                    </option>
-                    <option value="Standard">
-                        Standard
-                    </option>
+                    {options.map(function (option, i) {
+                        return (<option value={option.key} key={i}>
+                            {option.name}
+                        </option>);
+                    })}
+
                 </select>
             </div>
         </>
