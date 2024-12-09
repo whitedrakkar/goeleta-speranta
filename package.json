@@ -6,7 +6,8 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.20.1",
     "react-scripts": "^5.0.0",
-    "reactstrap": "^9.2.1"
+    "reactstrap": "^9.2.1",
+    "whitedrakkars-goeleta-speranta": "file:"
   },
   "main": "/index.js",
   "name": "whitedrakkars-goeleta-speranta",

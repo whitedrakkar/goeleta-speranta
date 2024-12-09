@@ -76,7 +76,7 @@ export function CompanyEdit({ onEdit }) {
                 <LabelAndTextInput value={euVatNumber} label="RO" onUpdate={setEuVatNumber}></LabelAndTextInput>
                 <LabelAndTextInput value={legalId} label="J" onUpdate={setLegalId}></LabelAndTextInput>
                 <Dropdown value={country} label="Country" onUpdate={setCountry} options={[{ key: 'Romania', name: 'Romania' }, { key: 'Hungary', name: 'Hungary' }, { key: 'Poland', name: 'Poland' }]}></Dropdown>
-                <Dropdown value={county} label="County" onUpdate={setCounty} options={[{ key: '', name: '' }, { key: 'Cluj', name: 'Cluj' }, { key: 'Bucuresti', name: 'Bucuresti' }, { key: 'Mures', name: 'Mures' }, { key: 'Harghita', name: 'Harghita' }]}></Dropdown>
+                <Dropdown value={county} label="County" onUpdate={setCounty}  options={[{ key: '', name: '' }, { key: 'Bucuresti', name: 'Bucuresti' }, { key: 'Cluj', name: 'Cluj' }, { key: 'Covasna', name: 'Covasna' }, { key: 'Harghita', name: 'Harghita' }, { key: 'Mures', name: 'Mures' }]}></Dropdown>
                 <LabelAndTextInput value={city} label="City" onUpdate={setCity}></LabelAndTextInput>
                 <LabelAndTextInput value={street} label="Street" onUpdate={setStreet}></LabelAndTextInput>
                 <LabelAndTextInput value={phone} label="Phone" onUpdate={setPhone}></LabelAndTextInput>
