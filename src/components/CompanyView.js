@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
+import { LabelAndTextInput } from './LabelAndTextInput.js';
+
 export function CompanyView({ companyId }) {
 
     let { id } = useParams();
@@ -97,19 +99,20 @@ export function CompanyView({ companyId }) {
 
     return (
         <>
+            <form>
+                <LabelAndTextInput value={company.name} label="Name" readonly={true}></LabelAndTextInput>
+                <LabelAndTextInput value={company.cif} label="CIF" readonly={true}></LabelAndTextInput>
+                <LabelAndTextInput value={company.euVatNumber} label="EU VAT nr." readonly={true}></LabelAndTextInput>
+                <LabelAndTextInput value={company.legalId} label="Legal Id" readonly={true}></LabelAndTextInput>
+                <LabelAndTextInput value={company.city + " " + company.street + ", " + company.county + ", " + company.country} label="Address" readonly={true}></LabelAndTextInput>
+                <LabelAndTextInput value={company.phone} label="Phone" readonly={true}></LabelAndTextInput>
+                <LabelAndTextInput value={company.email} label="E-mail" readonly={true}></LabelAndTextInput>
+                <LabelAndTextInput value={company.taxCategory} label="Tax category" readonly={true}></LabelAndTextInput>
+            </form>
             <div>
-                <button onClick={() => navigate(-1)}>Back</button>
+                <button className="btn btn-primary" onClick={() => handleEdit()}>Edit</button>
+                <button className="btn btn-primary" onClick={() => navigate(-1)}>Back</button>
             </div>
-            <div>
-                <button onClick={() => handleEdit()}>Edit</button>
-            </div>
-            <div>Name: {company.name}</div>
-            <div>Legal Id: {company.legalId}</div>
-            <div>CIF: {company.cif}</div>
-            <div>EU VAT nr.: {company.euVatNumber}</div>
-            <div>Tax category: {company.taxCategory}</div>
-            <div>Address: {company.city} {company.street}, {company.county}, {company.country}</div>
-
 
             <div>Invoices</div>
             <div className='container'>

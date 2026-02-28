@@ -6,14 +6,13 @@ export function Dropdown({ value, label, onUpdate, options }) {
     const fieldId = `${id}-${label}`;
 
     return (
-        <>
-            <div className='row'>
-                <label htmlFor={fieldId}>
-                    {label}:
-                </label>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label" htmlFor={fieldId}>{label}:</label>
+            <div class="col-sm-4">
                 <select
                     id={fieldId}
                     value={value}
+                    class="form-control form-control-sm"
                     onChange={event => {
                         onUpdate(event.target.value);
                     }}
@@ -24,8 +23,7 @@ export function Dropdown({ value, label, onUpdate, options }) {
                         </option>);
                     })}
 
-                </select>
-            </div>
-        </>
+                </select></div>
+        </div>
     )
 }
